@@ -1,0 +1,24 @@
+import type { Metadata } from 'next';
+import LegalShell from '../legal-shell';
+
+export const metadata: Metadata = {
+  title: 'Terms & Conditions — SaaSolution Drive',
+  description: 'Terms and conditions for the SaaSolution Drive application.',
+};
+
+export default function DriveTerms() {
+  return (
+    <LegalShell title="Terms & Conditions" intro="The conditions for using the SaaSolution Drive application and its preview services.">
+      <section><span>01</span><div><h2>Scope and acceptance</h2><p>These terms govern use of SaaSolution Drive provided by SaaSolutions SL. By creating an account, connecting storage or using the app, you agree to these terms. If you use the app for an organisation, you confirm that you are authorised to act for it.</p></div></section>
+      <section><span>02</span><div><h2>Preview status</h2><p>SaaSolution Drive is currently presented as a product preview. Features, supported platforms, storage integrations, plans and availability may change before public release. Preview functions may use test or local services and should not be relied on as the sole copy of important data.</p></div></section>
+      <section><span>03</span><div><h2>Accounts and connected storage</h2><p>You are responsible for accurate account information, safeguarding access to your devices and accounts, and maintaining authority to connect any storage provider. Your relationship with a third-party storage provider remains subject to that provider’s terms, limits, charges and availability.</p></div></section>
+      <section><span>04</span><div><h2>Your content and backups</h2><p>You retain ownership of your content and grant only the limited permissions needed to process it for features you request. You must have the right to store and transfer the content. Backups can fail because of permissions, connectivity, provider limits, device restrictions or software faults. Keep independent copies and test restores regularly.</p></div></section>
+      <section><span>05</span><div><h2>Licence</h2><p>Subject to these terms, SaaSolutions SL grants you a limited, revocable, non-exclusive, non-transferable licence to install and use the app for its intended purpose. The app, brand, design and software remain the intellectual property of SaaSolutions SL and its licensors.</p></div></section>
+      <section><span>06</span><div><h2>Acceptable use</h2><p>You may not use the app to violate law or third-party rights, distribute malware, interfere with security, access systems without permission, abuse service capacity, reverse engineer where prohibited, or store content that you are not authorised to control. Mandatory legal rights to interoperability are unaffected.</p></div></section>
+      <section><span>07</span><div><h2>Plans, billing and advertising</h2><p>Final plan features, prices, renewal terms and cancellation rights will be shown before purchase. Store purchases are also governed by the relevant app store’s billing rules. An eligible free plan may display consent-aware advertising; paid plans may be ad-free as described at purchase.</p></div></section>
+      <section><span>08</span><div><h2>Availability, updates and termination</h2><p>We may update the app to improve security, compatibility or functionality. Support for old versions may end where reasonably necessary. You may stop using the app at any time. Access may be suspended or terminated for serious misuse, security risk or material breach, subject to applicable consumer law.</p></div></section>
+      <section><span>09</span><div><h2>Disclaimers and liability</h2><p>The app is provided with the care required by applicable law, but uninterrupted or error-free operation cannot be guaranteed. Nothing in these terms excludes liability that cannot legally be excluded, including mandatory consumer protections. To the extent permitted by law, SaaSolutions SL is not responsible for losses caused by a third-party provider, user-controlled configuration, or failure to maintain an independent backup.</p></div></section>
+      <section><span>10</span><div><h2>Law, changes and contact</h2><p>These terms are governed by Spanish law, without depriving consumers of mandatory protections available in their country of residence. Courts are determined by applicable law. Material changes will be communicated reasonably before taking effect. Questions can be sent to <a href="mailto:hello@saasolution.es">hello@saasolution.es</a>.</p></div></section>
+    </LegalShell>
+  );
+}
