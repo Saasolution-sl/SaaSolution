@@ -9,7 +9,19 @@
     "Scale": "Escalar",
     "Careers / Vacancies": "Empleo / Vacantes",
     "Partners": "Socios",
-    "Support": "Soporte"
+    "Support": "Soporte",
+    "Native desktop app": "Aplicación nativa de escritorio",
+    "Native Mac app": "Aplicación nativa para Mac",
+    "One-command installation": "Instalación con un solo comando",
+    "Android phones and tablets": "Teléfonos y tablets Android",
+    "Huawei phones and tablets": "Teléfonos y tablets Huawei",
+    "View Windows downloads": "Ver descargas para Windows",
+    "View macOS downloads": "Ver descargas para macOS",
+    "Copy command": "Copiar comando",
+    "Copied": "Copiado",
+    "Scan to open on your device": "Escanea para abrir en tu dispositivo",
+    "Release status": "Estado de la versión",
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Requiere macOS 14 Sonoma o posterior en Apple silicon o Intel."
   },
   "nl": {
     "Company": "Bedrijf",
@@ -24,7 +36,19 @@
     "Resources": "Bronnen",
     "Careers / Vacancies": "Carrières / Vacatures",
     "Support": "Ondersteuning",
-    "Legal notice": "Juridische kennisgeving"
+    "Legal notice": "Juridische kennisgeving",
+    "Native desktop app": "Native desktopapp",
+    "Native Mac app": "Native Mac-app",
+    "One-command installation": "Installatie met één opdracht",
+    "Android phones and tablets": "Android-telefoons en -tablets",
+    "Huawei phones and tablets": "Huawei-telefoons en -tablets",
+    "View Windows downloads": "Windows-downloads bekijken",
+    "View macOS downloads": "macOS-downloads bekijken",
+    "Copy command": "Opdracht kopiëren",
+    "Copied": "Gekopieerd",
+    "Scan to open on your device": "Scan om op je apparaat te openen",
+    "Release status": "Releasestatus",
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Vereist macOS 14 Sonoma of nieuwer op Apple silicon of Intel."
   },
   "ar": {
     "SaaSolutions SL — Company and product preview": "SaaSolutions SL — معاينة الشركة والمنتجات",
@@ -108,7 +132,22 @@
     "Cookies": "ملفات تعريف الارتباط",
     "Legal notice": "إشعار قانوني",
     "© 2026 SaaSolutions SL · Ceuta, Spain": "© 2026 SaaSolutions SL · سبتة، إسبانيا",
-    "Spain · Mediterranean · Africa · South America · UAE/GCC · Southeast Asia · Europe": "إسبانيا · البحر الأبيض المتوسط · إفريقيا · أميركا الجنوبية · الإمارات/مجلس التعاون الخليجي · جنوب شرق آسيا · أوروبا"
+    "Spain · Mediterranean · Africa · South America · UAE/GCC · Southeast Asia · Europe": "إسبانيا · البحر الأبيض المتوسط · إفريقيا · أميركا الجنوبية · الإمارات/مجلس التعاون الخليجي · جنوب شرق آسيا · أوروبا",
+    "Download": "تنزيل",
+    "Native desktop app": "تطبيق أصلي لسطح المكتب",
+    "Native Mac app": "تطبيق أصلي لنظام macOS",
+    "One-command installation": "التثبيت بأمر واحد",
+    "Android phones and tablets": "هواتف وأجهزة Android اللوحية",
+    "iPhone and iPad": "iPhone وiPad",
+    "Huawei phones and tablets": "هواتف وأجهزة Huawei اللوحية",
+    "View Windows downloads": "عرض تنزيلات Windows",
+    "View macOS downloads": "عرض تنزيلات macOS",
+    "Copy command": "نسخ الأمر",
+    "Copied": "تم النسخ",
+    "Scan to open on your device": "امسح الرمز لفتحه على جهازك",
+    "Release status": "حالة الإصدار",
+    "The download channel is ready, but public binaries and final store listings have not been published yet.": "قناة التنزيل جاهزة، لكن ملفات التثبيت العامة وصفحات المتاجر النهائية لم تُنشر بعد.",
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "يتطلب macOS 14 Sonoma أو أحدث على أجهزة Apple silicon أو Intel."
   },
   "pt": {
     "Software that moves": "Software que gera",
@@ -116,7 +155,19 @@
     "International by design": "Internacional por conceção",
     "AI-first platforms": "Plataformas orientadas por IA",
     "Build": "Construir",
-    "Scale": "Escalar"
+    "Scale": "Escalar",
+    "Native desktop app": "Aplicação nativa para computador",
+    "Native Mac app": "Aplicação nativa para Mac",
+    "One-command installation": "Instalação com um único comando",
+    "Android phones and tablets": "Telemóveis e tablets Android",
+    "Huawei phones and tablets": "Telemóveis e tablets Huawei",
+    "View Windows downloads": "Ver transferências para Windows",
+    "View macOS downloads": "Ver transferências para macOS",
+    "Copy command": "Copiar comando",
+    "Copied": "Copiado",
+    "Scan to open on your device": "Digitalize para abrir no seu dispositivo",
+    "Release status": "Estado da versão",
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Requer macOS 14 Sonoma ou posterior em Apple silicon ou Intel."
   },
   "fr": {
     "Mission & vision": "Mission et vision",
@@ -131,7 +182,19 @@
     "About us": "À propos",
     "Support": "Assistance",
     "Privacy": "Confidentialité",
-    "Terms": "Conditions"
+    "Terms": "Conditions",
+    "Native desktop app": "Application de bureau native",
+    "Native Mac app": "Application Mac native",
+    "One-command installation": "Installation en une commande",
+    "Android phones and tablets": "Téléphones et tablettes Android",
+    "Huawei phones and tablets": "Téléphones et tablettes Huawei",
+    "View Windows downloads": "Voir les téléchargements Windows",
+    "View macOS downloads": "Voir les téléchargements macOS",
+    "Copy command": "Copier la commande",
+    "Copied": "Copié",
+    "Scan to open on your device": "Scannez pour ouvrir sur votre appareil",
+    "Release status": "État de la version",
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Nécessite macOS 14 Sonoma ou une version ultérieure sur Apple silicon ou Intel."
   },
   "de": {
     "Products": "Produkte",
@@ -143,6 +206,18 @@
     "Build": "Entwickeln",
     "Scale": "Skalieren",
     "Legal": "Rechtliches",
-    "Careers / Vacancies": "Karriere / Stellenangebote"
+    "Careers / Vacancies": "Karriere / Stellenangebote",
+    "Native desktop app": "Native Desktop-App",
+    "Native Mac app": "Native Mac-App",
+    "One-command installation": "Installation mit einem Befehl",
+    "Android phones and tablets": "Android-Smartphones und -Tablets",
+    "Huawei phones and tablets": "Huawei-Smartphones und -Tablets",
+    "View Windows downloads": "Windows-Downloads anzeigen",
+    "View macOS downloads": "macOS-Downloads anzeigen",
+    "Copy command": "Befehl kopieren",
+    "Copied": "Kopiert",
+    "Scan to open on your device": "Scannen, um auf Ihrem Gerät zu öffnen",
+    "Release status": "Veröffentlichungsstatus",
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Erfordert macOS 14 Sonoma oder neuer auf Apple silicon oder Intel."
   }
 }

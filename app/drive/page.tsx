@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { DriveLanguageSwitcher } from '../i18n/language-provider';
+import { DownloadOptions } from './download-options';
 
 function DriveIcon({ size = 34 }: { size?: number }) {
   return (
@@ -161,18 +162,11 @@ export default function Home() {
 
       <section className="availability-section" id="availability">
         <div className="availability-copy">
-          <p className="section-kicker">The next release</p>
+          <p className="section-kicker">Download SaaSolution Drive</p>
           <h2>One experience.<br /><em>Everywhere you work.</em></h2>
-          <p><span>SaaSolution Drive is being prepared for Android and iOS, with a native Windows preview already taking shape. Store listings will be connected here when releases are ready.</span> <span>Linux is also on the desktop roadmap.</span></p>
+          <p>Choose your platform to see its download channel, minimum requirements and installation options. Mobile downloads include a QR code so you can continue directly on your phone or tablet.</p>
         </div>
-        <div className="platform-list">
-          <div><span>01</span><p><b>Google Play</b><small>Android release in preparation</small></p><i>Coming soon</i></div>
-          <div><span>02</span><p><b>Huawei AppGallery</b><small>Huawei device release in preparation</small></p><i>Coming soon</i></div>
-          <div><span>03</span><p><b>Apple App Store</b><small>iPhone and iPad roadmap</small></p><i>Planned</i></div>
-          <div><span>04</span><p><b>macOS</b><small>Native Mac desktop roadmap</small></p><i>Planned</i></div>
-          <div><span>05</span><p><b>Windows</b><small>Native desktop preview</small></p><i>In development</i></div>
-          <div><span>06</span><p><b>Linux</b><small>Native Linux desktop roadmap</small></p><i>Planned</i></div>
-        </div>
+        <DownloadOptions />
       </section>
 
       <section className="final-cta">
