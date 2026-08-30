@@ -1,12 +1,13 @@
 'use client';
 
 import { useId, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import { troubleshootingEntries } from './edge-data';
 
 export type InstallPlatform = {
   id: string;
   name: string;
-  status: 'Planned' | 'Not yet supported';
+  status: 'Beta' | 'Planned' | 'Not yet supported';
   introduction: string;
   steps: string[];
   note?: string;
@@ -62,14 +63,16 @@ export function InstallTabs({ platforms }: { platforms: InstallPlatform[] }) {
           >
             <div className="install-panel-heading">
               <div><p>Platform guide</p><h2>{platform.name}</h2></div>
-              <span className={`edge-status ${platform.status === 'Planned' ? 'planned' : 'unsupported'}`}>{platform.status}</span>
+              <span className={`edge-status ${platform.status === 'Beta' ? 'beta' : platform.status === 'Planned' ? 'planned' : 'unsupported'}`}>{platform.status}</span>
             </div>
             <p className="install-panel-intro">{platform.introduction}</p>
             <ol className="install-steps">
               {platform.steps.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span><p>{step}</p></li>)}
             </ol>
             {platform.note && <p className="install-note"><b>Release boundary</b>{platform.note}</p>}
-            <a className="edge-inline-cta" href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20platform%20access">Request platform access <span>↗</span></a>
+            {platform.status === 'Beta'
+              ? <Link className="edge-inline-cta" href="/drive/edge/beta">Download beta package <span>→</span></Link>
+              : <a className="edge-inline-cta" href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20platform%20access">Request platform access <span>↗</span></a>}
           </section>
         ))}
       </div>

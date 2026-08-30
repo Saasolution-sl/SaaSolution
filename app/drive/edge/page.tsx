@@ -25,7 +25,7 @@ const benefits = [
   [History, 'Version history', 'Retained revisions support comparison, explicit conflict resolution and recovery workflows.'],
   [ShieldCheck, 'Safe conflicts', 'Concurrent edits are preserved and brought to an administrator instead of silently overwriting a file.'],
   [SlidersHorizontal, 'Selective folders', 'Assign only approved roots, with schedules and bandwidth controls designed for each location.'],
-  [Network, 'x86-64 and ARM64 plan', 'The agent architecture targets both common server architectures; public builds are not released yet.'],
+  [Network, 'x86-64 and ARM64 beta', 'Signed Linux builds are available for guided pilots on both common server architectures.'],
   [ServerCog, 'Central administration', 'The planned control plane shows node health, pending work, conflicts and revocable enrollment.'],
   [DatabaseZap, 'Durable local journal', 'Every local mutation is recorded before it is eligible for remote publication.'],
   [ArchiveRestore, 'Recovery support', 'Version retention and safeguards for large changes are designed to assist ransomware recovery.'],
@@ -57,9 +57,9 @@ export default function EdgePage() {
       {
         '@type': ['Product', 'SoftwareApplication'],
         name: 'SaaSolution Drive Edge',
-        description: 'Local network storage for multiple locations that remains available during an internet outage, with planned synchronization through Cubbit.',
+        description: 'Local network storage for multiple locations that remains available during an internet outage, with beta synchronization through Cubbit.',
         applicationCategory: 'BusinessApplication',
-        operatingSystem: 'NAS platforms running Linux (planned)',
+        operatingSystem: 'Linux x86-64 and Linux ARM64 (limited beta)',
         brand: { '@type': 'Brand', name: 'SaaSolutions' },
         url: 'https://saasolution.es/drive/edge',
       },
@@ -85,9 +85,9 @@ export default function EdgePage() {
           <p className="edge-kicker"><span /> SaaSolution Drive Edge</p>
           <h1>Your files stay available.<em>Even when the internet doesn’t.</em></h1>
           <p className="edge-hero-lede">SaaSolution Drive Edge gives every office a local network drive that works at LAN speed. Connect multiple locations through Cubbit, continue working offline and synchronize changes automatically when the connection returns.</p>
-          <p className="edge-release-note"><b>Engineering preview</b> Public installers and production enrollment are not available yet.</p>
+          <p className="edge-release-note"><b>Limited free beta</b> Signed Linux x86-64 and ARM64 builds are available for guided 30-day pilots.</p>
           <div className="edge-hero-actions">
-            <a className="primary-button" href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20early%20access">Request early access <span>↗</span></a>
+            <Link className="primary-button" href="/drive/edge/beta">Join the free beta <span>↗</span></Link>
             <a className="text-link" href="#how-it-works">See how locations stay in sync <span>↓</span></a>
           </div>
         </div>
@@ -155,9 +155,9 @@ export default function EdgePage() {
       </section>
 
       <section className="edge-platforms" id="platforms">
-        <div className="edge-section-heading light"><p className="edge-kicker">Supported systems</p><h2>Honest platform<br /><em>status.</em></h2><span>The codebase contains an early Go foundation, but no signed public package or production enrollment service. Nothing is labelled available or beta yet.</span></div>
+        <div className="edge-section-heading light"><p className="edge-kicker">Supported systems</p><h2>Honest platform<br /><em>status.</em></h2><span>Linux x86-64, Linux ARM64 and Raspberry Pi OS 64-bit are open for guided beta testing. NAS vendor packages and Windows Server remain unsupported.</span></div>
         <div className="edge-platform-grid">
-          {edgePlatforms.map((platform) => <article key={platform.id}><div><h3>{platform.name}</h3><span className={`edge-status ${platform.status === 'Planned' ? 'planned' : 'unsupported'}`}>{platform.status}</span></div><p>{platform.detail}</p></article>)}
+          {edgePlatforms.map((platform) => <article key={platform.id}><div><h3>{platform.name}</h3><span className={`edge-status ${platform.status === 'Beta' ? 'beta' : platform.status === 'Planned' ? 'planned' : 'unsupported'}`}>{platform.status}</span></div><p>{platform.detail}</p></article>)}
         </div>
         <div className="edge-platform-actions"><Link className="light-button" href="/drive/edge/install">View installation guide <span>→</span></Link><a href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20platform%20notification">Notify me about platform releases</a></div>
       </section>
@@ -176,8 +176,8 @@ export default function EdgePage() {
       </section>
 
       <section className="edge-plans" id="plans">
-        <div><p>Plans and licensing</p><h2>Deployment flexibility, without invented pricing.</h2></div>
-        <div className="edge-plan-card"><span>Business &amp; Enterprise</span><h3>Edge node licence required</h3><p>Cloud synchronization · Works offline · Multiple locations · Edge hosted on your own systems · Enterprise support options</p><a href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20enterprise%20deployment">Request enterprise deployment assistance <span>↗</span></a></div>
+        <div><p>Limited beta offer</p><h2>Thirty guided days, free.</h2></div>
+        <div className="edge-plan-card"><span>No card · No automatic charge</span><h3>Free 30-day beta cohort</h3><p>Linux x86-64 or ARM64 · One or two locations · Manual onboarding · Best-effort beta support · Independent backup required</p><Link href="/drive/edge/beta">Review the beta and apply <span>↗</span></Link></div>
       </section>
 
       <section className="edge-faq" id="faq">
@@ -186,8 +186,8 @@ export default function EdgePage() {
       </section>
 
       <section className="edge-final-cta">
-        <p>SaaSolution Drive Edge · Engineering preview</p><h2>Bring local continuity<br /><em>to every location.</em></h2>
-        <div><Link className="light-button" href="/drive/edge/install">View installation guide <span>→</span></Link><a href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20early%20access">Join the Edge early access list <span>↗</span></a></div>
+        <p>SaaSolution Drive Edge · Limited free beta</p><h2>Bring local continuity<br /><em>to a safe test share.</em></h2>
+        <div><Link className="light-button" href="/drive/edge/beta">Apply for 30 days free <span>→</span></Link><Link href="/drive/edge/install">Read the installation guide <span>↗</span></Link></div>
       </section>
       <EdgeFooter />
     </main>

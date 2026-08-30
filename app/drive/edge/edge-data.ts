@@ -1,4 +1,4 @@
-export type EdgePlatformStatus = 'Planned' | 'Not yet supported';
+export type EdgePlatformStatus = 'Beta' | 'Planned' | 'Not yet supported';
 
 export type EdgePlatform = {
   id: string;
@@ -9,21 +9,21 @@ export type EdgePlatform = {
 
 export const edgePlatforms: EdgePlatform[] = [
   { id: 'docker', name: 'Docker', detail: 'The first packaging target for the Linux Edge Agent.', status: 'Planned' },
-  { id: 'linux', name: 'Generic Linux', detail: 'A native service is being designed for supported 64-bit distributions.', status: 'Planned' },
-  { id: 'x86', name: 'Generic x86-64', detail: 'Architecture support is present in the engineering plan, not a public build.', status: 'Planned' },
-  { id: 'arm', name: 'Generic ARM64', detail: 'Architecture support is present in the engineering plan, not a public build.', status: 'Planned' },
+  { id: 'linux', name: 'Generic Linux', detail: 'Signed beta archives are available for guided, non-production pilots.', status: 'Beta' },
+  { id: 'x86', name: 'Generic x86-64', detail: 'Linux x86-64 is available in the signed v0.2.0 beta package.', status: 'Beta' },
+  { id: 'arm', name: 'Generic ARM64', detail: 'Linux ARM64 is available in the signed v0.2.0 beta package.', status: 'Beta' },
   { id: 'synology', name: 'Synology DSM', detail: 'Container Manager packaging and DSM validation are still required.', status: 'Not yet supported' },
   { id: 'qnap', name: 'QNAP QTS/QuTS', detail: 'Container Station packaging and vendor validation are still required.', status: 'Not yet supported' },
   { id: 'truenas', name: 'TrueNAS SCALE', detail: 'Application packaging and dataset validation are still required.', status: 'Not yet supported' },
   { id: 'unraid', name: 'Unraid', detail: 'A Community Applications template has not been released.', status: 'Not yet supported' },
-  { id: 'raspberry', name: 'Raspberry Pi OS 64-bit', detail: 'Hardware and storage endurance validation are still required.', status: 'Not yet supported' },
+  { id: 'raspberry', name: 'Raspberry Pi OS 64-bit', detail: 'ARM64 beta testing is open with reliable external storage and an independent backup.', status: 'Beta' },
   { id: 'windows-server', name: 'Windows Server', detail: 'No supported or tested Edge service is available for Windows Server.', status: 'Not yet supported' },
 ];
 
 export const edgeFaqs = [
   {
     question: 'Is SaaSolution Drive Edge available to install today?',
-    answer: 'Not yet. The agent foundation is in active engineering, but public installers, signed container images and production enrollment services have not been released. You can request early access without being sent to a fake download.',
+    answer: 'A limited signed beta is available for Linux x86-64, Linux ARM64 and Raspberry Pi OS 64-bit. Accepted organizations receive a guided 30-day cohort. It is not a production release or an immutable backup service.',
   },
   {
     question: 'Can people work when the internet is unavailable?',

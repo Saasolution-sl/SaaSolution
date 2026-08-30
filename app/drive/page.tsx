@@ -148,8 +148,8 @@ export default function Home() {
           </article>
         </div>
         <Link className="drive-edge-entry" href="/drive/edge">
-          <div><span>New product direction</span><h3>SaaSolution Drive Edge</h3><p>Offline-first network storage for every location. Keep a fast local drive in each office and synchronize approved folders through Cubbit whenever connectivity is available.</p></div>
-          <div className="drive-edge-entry-status"><i /><span><b>Local access</b><small>Available during outages</small></span><strong>Explore Edge <em>↗</em></strong></div>
+          <div><span>Free 30-day beta now open</span><h3>SaaSolution Drive Edge</h3><p>Offline-first network storage for every location. Keep a fast local drive in each office and synchronize approved folders through Cubbit whenever connectivity is available.</p></div>
+          <div className="drive-edge-entry-status"><i /><span><b>Linux beta</b><small>x86-64 and ARM64</small></span><strong>Explore Edge <em>↗</em></strong></div>
         </Link>
       </section>
 

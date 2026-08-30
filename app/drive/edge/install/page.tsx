@@ -5,7 +5,7 @@ import { EdgeFooter, EdgeHeader } from '../edge-shell';
 
 export const metadata: Metadata = {
   title: 'Install SaaSolution Drive Edge | Platform Guide',
-  description: 'Prepare, pair and operate SaaSolution Drive Edge across Docker and planned NAS platforms. Current release boundaries are clearly identified.',
+  description: 'Prepare, verify and operate the SaaSolution Drive Edge limited beta on Linux x86-64, ARM64 and Raspberry Pi OS 64-bit.',
   alternates: { canonical: '/drive/edge/install' },
   openGraph: {
     title: 'Install SaaSolution Drive Edge | Platform Guide',
@@ -117,15 +117,15 @@ const platforms: InstallPlatform[] = [
     ],
   },
   {
-    id: 'raspberry', name: 'Raspberry Pi', status: 'Not yet supported',
-    introduction: 'Raspberry Pi 4 or later with 64-bit Raspberry Pi OS is the intended baseline, but performance, thermals and storage endurance have not been validated.',
+    id: 'raspberry', name: 'Raspberry Pi', status: 'Beta',
+    introduction: 'The signed Linux ARM64 beta can be evaluated on Raspberry Pi OS 64-bit with a Raspberry Pi 4 or later and reliable external storage.',
     steps: [
-      'Use a Raspberry Pi 4 or later with 64-bit Raspberry Pi OS only after ARM64 support is published.',
+      'Use a Raspberry Pi 4 or later with 64-bit Raspberry Pi OS and download the signed ARM64 beta archive.',
       'Use an external SSD for business files and Edge state. A microSD card should not be the primary business file store because of endurance and recovery risk.',
       'Mount the SSD persistently and verify a separate backup before initialization.',
-      'Install the supported Docker and Compose versions from the future release matrix.',
-      'Deploy the approved ARM64 image with non-root permissions and separate data mappings.',
-      'Pair the node and choose the mounted synchronization folder.',
+      'Verify SHA256SUMS and its Ed25519 signature before extracting the archive.',
+      'Install the native ARM64 binaries with a dedicated non-login service identity.',
+      'Complete the beta setup with the node-scoped values supplied during onboarding.',
       'For a generic appliance configuration, publish the folder with Samba only after the initial dataset is validated.',
       'Check thermal stability, storage reserve and a small file transfer before production use.',
       'Pause and verify the signed ARM64 release before updates; preserve the state volume.',
@@ -133,15 +133,15 @@ const platforms: InstallPlatform[] = [
     ],
   },
   {
-    id: 'linux', name: 'Generic Linux', status: 'Planned',
-    introduction: 'The Go agent foundation targets Linux, but there is no complete service, public binary, Docker image or supported distribution matrix yet.',
+    id: 'linux', name: 'Generic Linux', status: 'Beta',
+    introduction: 'Signed native beta archives are available for Linux x86-64 and ARM64. They are intended for guided, non-production pilots with an independent backup.',
     steps: [
-      'Wait for the published distribution, kernel and architecture compatibility matrix.',
-      'Choose the Docker route unless SaaSolution publishes a signed native systemd package for your distribution.',
+      'Download the signed archive matching Linux x86-64 or ARM64 from the beta page.',
+      'Verify the release signature and archive SHA-256 before extracting it.',
       'Create a dedicated service user and group with minimum access to the approved folder.',
       'Keep agent state on a separate persistent filesystem path with sufficient reserve space.',
       'Integrate with an existing Samba or NFS service; Edge does not need to replace it.',
-      'Pair using a short-lived code in the private local setup page.',
+      'Run the beta setup tool using the node-scoped values provided during onboarding; never pass secret keys as command arguments.',
       'Validate the path, storage reserve, outbound connectivity and a small test file.',
       'Pause and drain before upgrades, then verify the signed package or image.',
       'Revoke the node before removal and retain state until recovery is confirmed.',
@@ -161,7 +161,7 @@ const platforms: InstallPlatform[] = [
 ];
 
 const preparation = [
-  ['Account and licence', 'Use an administrator-owned SaaSolution Drive organization. Edge is intended for Business and Enterprise and requires an Edge node licence; final pricing is not configured.'],
+  ['Beta cohort', 'Apply for the free 30-day cohort. No card is required and there is no automatic charge. A named technical operator and independent backup are mandatory.'],
   ['Cubbit project', 'Prepare the approved Cubbit project and bucket design. Bucket versioning is required by the engineering plan; Object Lock is optional and must follow a reviewed retention decision.'],
   ['Host access', 'Use a supported 64-bit host with administrator access. Final minimum CPU and RAM are not validated; plan at least 2 CPU cores, 4 GB RAM and storage capacity for the full local dataset plus working reserve.'],
   ['Folders and permissions', 'Create the local synchronization root and a separate agent-state folder. Use a dedicated non-root identity and do not grant access to unrelated shares.'],
@@ -187,7 +187,7 @@ export default function EdgeInstallPage() {
       <EdgeHeader active="install" />
       <section className="edge-docs-hero">
         <div><p className="edge-kicker"><span /> Installation and operations</p><h1>Deploy with clarity.<br /><em>Not guesswork.</em></h1></div>
-        <div><span>Pre-release documentation</span><p>The Edge Agent foundation is in active engineering. These guides document the intended secure rollout while clearly separating preparation from currently unavailable installers.</p><a href="mailto:hello@saasolution.es?subject=SaaSolution%20Drive%20Edge%20early%20access">Request early access <b>↗</b></a></div>
+        <div><span>Limited beta documentation</span><p>Signed native Linux packages are available for guided x86-64, ARM64 and Raspberry Pi OS 64-bit pilots. Other platform instructions remain preparation guidance only.</p><Link href="/drive/edge/beta">View the free beta <b>→</b></Link></div>
       </section>
 
       <nav className="edge-docs-index" aria-label="Installation guide sections">
@@ -210,7 +210,7 @@ export default function EdgeInstallPage() {
       </section>
 
       <section className="edge-pairing" id="pair">
-        <div className="edge-section-heading light"><p className="edge-kicker">Secure enrollment</p><h2>Pair the node.<br /><em>Keep secrets out of scripts.</em></h2><span>The management backend and local setup flow are not released yet; this is the intended production sequence.</span></div>
+        <div className="edge-section-heading light"><p className="edge-kicker">Secure beta onboarding</p><h2>Pair the node.<br /><em>Keep secrets out of scripts.</em></h2><span>Beta onboarding is manually approved. The setup tool generates encryption and management secrets locally and refuses to overwrite an existing installation.</span></div>
         <ol className="pairing-steps">
           {['Sign in to SaaSolution Drive.','Open Admin → Edge Nodes.','Select Add Edge Node.','Enter the location and node name.','Generate a short-lived pairing code.','Enter the pairing code in the local setup page or installer.','Select the assigned Cubbit bucket and allowed folders.','Confirm the local storage path.','Run the validation checks.','Start the initial synchronization.'].map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span><p>{step}</p></li>)}
         </ol>
