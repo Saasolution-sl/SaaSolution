@@ -7,7 +7,7 @@ const projects = [
   { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
   { name: 'Mithaq', detail: 'Digital Islamic prenup and will', tone: 'yellow' },
   { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
-  { name: 'SaaSolution Drive', detail: 'Private cloud storage made simple', tone: 'drive', href: '/drive' },
+  { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
   { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
 ];
 
@@ -54,7 +54,7 @@ export default function CompanyHome() {
               <>
                 <div className={`project-visual ${project.tone}`}>
                   {project.tone === 'drive' ? (
-                    <Image src="/og.png" alt="SaaSolution Drive — Your files. Quietly protected." fill sizes="(max-width: 700px) 78vw, 360px" priority />
+                    <><Image src="/og.png" alt="SaaSolution Drive — Your files. Quietly protected." fill sizes="(max-width: 700px) 78vw, 360px" priority /><span className="drive-edge-chip">Edge / NAS</span></>
                   ) : (
                     <><span>{String(index + 1).padStart(2, '0')}</span><i>{project.name.slice(0, 2)}</i></>
                   )}
@@ -142,6 +142,7 @@ export default function CompanyHome() {
             <a href="https://www.saasolution.es/products/hospitalitytv">HospitalityTV</a>
             <a href="https://www.saasolution.es/products/mithaq">Mithaq</a>
             <a href="/drive">SaaSolution Drive</a>
+            <a href="/drive/edge">SaaSolution Drive Edge / NAS</a>
           </section>
           <section>
             <h3>Resources</h3>

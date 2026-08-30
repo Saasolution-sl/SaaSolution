@@ -44,7 +44,7 @@ function translatePage(locale: Locale) {
   let current = walker.nextNode() as Text | null;
   while (current) {
     const parent = current.parentElement;
-    if (parent && !parent.closest('[data-i18n-skip]') && !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) {
+    if (parent && !parent.closest('[data-i18n-skip], pre, code') && !['SCRIPT', 'STYLE', 'NOSCRIPT', 'PRE', 'CODE'].includes(parent.tagName)) {
       const source = originalText.get(current) ?? current.nodeValue ?? '';
       originalText.set(current, source);
       const match = source.match(/^(\s*)([\s\S]*?)(\s*)$/);
@@ -82,6 +82,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     translatePage(locale);
+    const observer = new MutationObserver(() => translatePage(locale));
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, [locale]);
 
   const setLocale = useCallback((nextLocale: Locale) => {

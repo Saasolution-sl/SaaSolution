@@ -15,12 +15,13 @@ from pathlib import Path
 from argostranslate import translate
 
 
-ROUTES = ("/", "/drive", "/drive/privacy", "/drive/terms")
+ROUTES = ("/", "/drive", "/drive/edge", "/drive/edge/install", "/drive/privacy", "/drive/terms")
 LOCALES = ("es", "nl", "ar", "pt", "fr", "de")
 OUTPUT = Path(__file__).parents[1] / "app" / "i18n" / "translations.json"
 MANUAL_OVERRIDES = Path(__file__).parents[1] / "app" / "i18n" / "manual-overrides.json"
-SKIP_ELEMENTS = {"script", "style", "noscript"}
+SKIP_ELEMENTS = {"script", "style", "noscript", "pre", "code"}
 PROTECTED = (
+    "SaaSolution Drive Edge",
     "SaaSolution Drive",
     "Drive",
     "SaaSolutions SL",
@@ -43,12 +44,26 @@ PROTECTED = (
     "macOS",
     "Windows",
     "Linux",
+    "Cubbit",
+    "NAS",
+    "SMB",
+    "NFS",
+    "Docker",
+    "Synology DSM",
+    "QNAP QTS/QuTS",
+    "TrueNAS SCALE",
+    "Unraid",
+    "Raspberry Pi",
+    "ARM64",
+    "x86-64",
 )
 UNCHANGED = {
     "SaaSolutions", "SL", "SaaSolution Drive", "hospitalityOS", "HospitalityOps",
     "HospitalityTV", "Mithaq", "Viyra", "Delicious Fitness", "Google Play",
     "Apple App Store", "Huawei AppGallery", "AppGallery", "macOS", "Windows",
-    "Linux",
+    "Linux", "SaaSolution Drive Edge", "Cubbit", "NAS", "SMB", "NFS",
+    "Docker", "Synology DSM", "QNAP QTS/QuTS", "TrueNAS SCALE", "Unraid",
+    "Raspberry Pi", "ARM64", "x86-64",
     "Asunción", "Ceuta", "Cebu City", "Olivia", "Signal", "S3", "YOU", "DRIVE",
     "OS", "API", "GB", "EN", "ES", "NL", "AR", "PT", "FR", "DE",
 }

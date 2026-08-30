@@ -107,7 +107,7 @@ function StoreBadge({ badge }: { badge: Platform['badge'] }) {
   if (badge === 'huawei') {
     return <Image src="/huawei-appgallery-badge.png" alt="Explore it on Huawei AppGallery" width={160} height={48} />;
   }
-  return <Image src="/get-it-on-google-play.png" alt="Get it on Google Play" width={186} height={72} />;
+  return <Image src="/get-it-on-google-play.png" alt="Get it on Google Play" width={186} height={72} style={{ width: 'auto' }} />;
 }
 
 export function DownloadOptions() {

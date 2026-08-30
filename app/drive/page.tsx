@@ -25,7 +25,7 @@ function StoreBadges() {
           <Image src="/download-on-app-store.svg" alt="Download on the App Store" width={120} height={40} priority />
         </span>
         <span className="store-badge google" aria-label="Coming to Google Play">
-          <Image src="/get-it-on-google-play.png" alt="Get it on Google Play" width={155} height={60} priority />
+          <Image src="/get-it-on-google-play.png" alt="Get it on Google Play" width={155} height={60} style={{ width: 'auto' }} priority />
         </span>
         <span className="store-badge huawei" aria-label="Coming to Huawei AppGallery">
           <Image src="/huawei-appgallery-badge.png" alt="Explore it on Huawei AppGallery" width={800} height={240} priority />
@@ -94,6 +94,7 @@ export default function Home() {
         <div className="nav-links">
           <Link href="/">Home</Link>
           <a href="#product">Product</a>
+          <Link href="/drive/edge">Edge / NAS</Link>
           <a href="#privacy">Privacy</a>
           <a href="#availability">Availability</a>
         </div>
@@ -146,6 +147,10 @@ export default function Home() {
             <div><p>Storage freedom</p><h3>Your provider.<br />Your choice.</h3><span>A provider-neutral foundation designed to keep storage and the app experience independent.</span></div>
           </article>
         </div>
+        <Link className="drive-edge-entry" href="/drive/edge">
+          <div><span>New product direction</span><h3>SaaSolution Drive Edge</h3><p>Offline-first network storage for every location. Keep a fast local drive in each office and synchronize approved folders through Cubbit whenever connectivity is available.</p></div>
+          <div className="drive-edge-entry-status"><i /><span><b>Local access</b><small>Available during outages</small></span><strong>Explore Edge <em>↗</em></strong></div>
+        </Link>
       </section>
 
       <section className="privacy-section" id="privacy">
@@ -179,7 +184,7 @@ export default function Home() {
       <footer className="drive-footer">
         <a className="wordmark drive-wordmark footer-brand" href="#top"><DriveIcon /><span>SaaSolution Drive</span></a>
         <p>SaaSolution Drive is a product preview. Store availability and production storage connections are in development. It is not an official Cubbit application and does not imply a commercial partnership.</p>
-        <div><a href="/drive/privacy">Privacy</a><a href="/drive/terms">Terms &amp; Conditions</a><a href="https://www.saasolution.es/" target="_blank" rel="noreferrer">SaaSolution.es</a><a href="mailto:hello@saasolution.es">Contact</a></div>
+        <div><a href="/drive/edge">Drive Edge / NAS</a><a href="/drive/privacy">Privacy</a><a href="/drive/terms">Terms &amp; Conditions</a><a href="https://www.saasolution.es/" target="_blank" rel="noreferrer">SaaSolution.es</a><a href="mailto:hello@saasolution.es">Contact</a></div>
         <small>Apple and the Apple logo are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC. HUAWEI and AppGallery are trademarks of Huawei Technologies Co., Ltd.</small>
       </footer>
     </main>
