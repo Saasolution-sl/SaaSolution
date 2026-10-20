@@ -25,7 +25,6 @@ export const edgeBetaApplicationSchema = z.object({
   betaTermsAccepted: z.literal(true, { error: 'Accept the beta conditions to submit.' }),
   productUpdates: z.boolean().optional(),
   website: z.string().max(200).optional(),
-  turnstileToken: z.string().max(2048).optional(),
   startedAt: z.number().int().positive(),
 }).superRefine((application, context) => {
   if (application.applicationType === 'business') {

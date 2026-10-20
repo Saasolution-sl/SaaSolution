@@ -83,26 +83,6 @@ function hasTrustedOrigin(request: Request) {
   }
 }
 
-// Cloudflare Turnstile. Verification is enforced once TURNSTILE_SECRET_KEY is set in the environment.
-async function passesTurnstile(token: string | undefined, address: string) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
-  try {
-    const body = new URLSearchParams({ secret, response: token });
-    if (address !== 'unknown') body.set('remoteip', address);
-    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body,
-      signal: AbortSignal.timeout(5_000),
-    });
-    const outcome = await response.json() as { success?: boolean };
-    return outcome.success === true;
-  } catch {
-    return false;
-  }
-}
-
 function applicationId(now: Date) {
   const date = now.toISOString().slice(0, 10).replaceAll('-', '');
   return `EDGE-${date}-${randomBytes(3).toString('hex').toUpperCase()}`;
@@ -228,9 +208,6 @@ export async function POST(request: Request) {
   const parsed = edgeBetaApplicationSchema.safeParse(raw);
   if (!parsed.success) return json({ error: 'Please review the highlighted answers and try again.' }, 400);
   const application = parsed.data;
-  if (!application.website && !(await passesTurnstile(application.turnstileToken, clientAddress(request)))) {
-    return json({ error: 'Security check failed. Please complete the check and try again.' }, 400);
-  }
   if (application.website) {
     return json({ applicationId: 'EDGE-RECEIVED', outcome: 'guided-review', message: 'Your application was received.' });
   }
