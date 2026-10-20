@@ -21,7 +21,15 @@
     "Copied": "Copiado",
     "Scan to open on your device": "Escanea para abrir en tu dispositivo",
     "Release status": "Estado de la versión",
-    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Requiere macOS 14 Sonoma o posterior en Apple silicon o Intel."
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Requiere macOS 14 Sonoma o posterior en Apple silicon o Intel.",
+    "New product": "Nuevo producto",
+    "Just launched by SaaSolutions": "Recién lanzado por SaaSolutions",
+    "Scheduling software that stays yours. Booking pages, calendar sync, video rooms and automated emails, built and run by SaaSolutions.": "Software de agenda que sigue siendo tuyo. Páginas de reserva, sincronización de calendarios, salas de vídeo y correos automáticos, creado y operado por SaaSolutions.",
+    "Visit RSViP Online ↗": "Visitar RSViP Online ↗",
+    "Maybe later": "Quizá más tarde",
+    "Close": "Cerrar",
+    "Scheduling, booking pages and calendar sync": "Agenda, páginas de reserva y sincronización de calendarios",
+    "New": "Nuevo"
   },
   "nl": {
     "Company": "Bedrijf",
@@ -48,7 +56,15 @@
     "Copied": "Gekopieerd",
     "Scan to open on your device": "Scan om op je apparaat te openen",
     "Release status": "Releasestatus",
-    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Vereist macOS 14 Sonoma of nieuwer op Apple silicon of Intel."
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Vereist macOS 14 Sonoma of nieuwer op Apple silicon of Intel.",
+    "New product": "Nieuw product",
+    "Just launched by SaaSolutions": "Zojuist gelanceerd door SaaSolutions",
+    "Scheduling software that stays yours. Booking pages, calendar sync, video rooms and automated emails, built and run by SaaSolutions.": "Planningssoftware die van jou blijft. Boekingspagina’s, agendasynchronisatie, videokamers en geautomatiseerde e-mails, gebouwd en beheerd door SaaSolutions.",
+    "Visit RSViP Online ↗": "Bezoek RSViP Online ↗",
+    "Maybe later": "Misschien later",
+    "Close": "Sluiten",
+    "Scheduling, booking pages and calendar sync": "Planning, boekingspagina’s en agendasynchronisatie",
+    "New": "Nieuw"
   },
   "ar": {
     "SaaSolutions SL — Company and product preview": "SaaSolutions SL — معاينة الشركة والمنتجات",
@@ -147,7 +163,15 @@
     "Scan to open on your device": "امسح الرمز لفتحه على جهازك",
     "Release status": "حالة الإصدار",
     "The download channel is ready, but public binaries and final store listings have not been published yet.": "قناة التنزيل جاهزة، لكن ملفات التثبيت العامة وصفحات المتاجر النهائية لم تُنشر بعد.",
-    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "يتطلب macOS 14 Sonoma أو أحدث على أجهزة Apple silicon أو Intel."
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "يتطلب macOS 14 Sonoma أو أحدث على أجهزة Apple silicon أو Intel.",
+    "New product": "منتج جديد",
+    "Just launched by SaaSolutions": "أطلقته SaaSolutions للتو",
+    "Scheduling software that stays yours. Booking pages, calendar sync, video rooms and automated emails, built and run by SaaSolutions.": "برنامج جدولة يبقى ملكك. صفحات حجز ومزامنة التقويم وغرف فيديو ورسائل بريد تلقائية، من بناء وتشغيل SaaSolutions.",
+    "Visit RSViP Online ↗": "زيارة RSViP Online ↗",
+    "Maybe later": "ربما لاحقًا",
+    "Close": "إغلاق",
+    "Scheduling, booking pages and calendar sync": "الجدولة وصفحات الحجز ومزامنة التقويم",
+    "New": "جديد"
   },
   "pt": {
     "Software that moves": "Software que gera",
@@ -167,7 +191,15 @@
     "Copied": "Copiado",
     "Scan to open on your device": "Digitalize para abrir no seu dispositivo",
     "Release status": "Estado da versão",
-    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Requer macOS 14 Sonoma ou posterior em Apple silicon ou Intel."
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Requer macOS 14 Sonoma ou posterior em Apple silicon ou Intel.",
+    "New product": "Novo produto",
+    "Just launched by SaaSolutions": "Acabado de lançar pela SaaSolutions",
+    "Scheduling software that stays yours. Booking pages, calendar sync, video rooms and automated emails, built and run by SaaSolutions.": "Software de agendamento que continua a ser seu. Páginas de marcação, sincronização de calendários, salas de vídeo e e-mails automáticos, criado e operado pela SaaSolutions.",
+    "Visit RSViP Online ↗": "Visitar RSViP Online ↗",
+    "Maybe later": "Talvez mais tarde",
+    "Close": "Fechar",
+    "Scheduling, booking pages and calendar sync": "Agendamento, páginas de marcação e sincronização de calendários",
+    "New": "Novo"
   },
   "fr": {
     "Mission & vision": "Mission et vision",
@@ -194,7 +226,15 @@
     "Copied": "Copié",
     "Scan to open on your device": "Scannez pour ouvrir sur votre appareil",
     "Release status": "État de la version",
-    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Nécessite macOS 14 Sonoma ou une version ultérieure sur Apple silicon ou Intel."
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Nécessite macOS 14 Sonoma ou une version ultérieure sur Apple silicon ou Intel.",
+    "New product": "Nouveau produit",
+    "Just launched by SaaSolutions": "Tout juste lancé par SaaSolutions",
+    "Scheduling software that stays yours. Booking pages, calendar sync, video rooms and automated emails, built and run by SaaSolutions.": "Un logiciel de planification qui reste à vous. Pages de réservation, synchronisation des calendriers, salles vidéo et e-mails automatiques, conçu et exploité par SaaSolutions.",
+    "Visit RSViP Online ↗": "Visiter RSViP Online ↗",
+    "Maybe later": "Peut-être plus tard",
+    "Close": "Fermer",
+    "Scheduling, booking pages and calendar sync": "Planification, pages de réservation et synchronisation des calendriers",
+    "New": "Nouveau"
   },
   "de": {
     "Products": "Produkte",
@@ -218,6 +258,14 @@
     "Copied": "Kopiert",
     "Scan to open on your device": "Scannen, um auf Ihrem Gerät zu öffnen",
     "Release status": "Veröffentlichungsstatus",
-    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Erfordert macOS 14 Sonoma oder neuer auf Apple silicon oder Intel."
+    "Requires macOS 14 Sonoma or later on Apple silicon or Intel.": "Erfordert macOS 14 Sonoma oder neuer auf Apple silicon oder Intel.",
+    "New product": "Neues Produkt",
+    "Just launched by SaaSolutions": "Neu von SaaSolutions",
+    "Scheduling software that stays yours. Booking pages, calendar sync, video rooms and automated emails, built and run by SaaSolutions.": "Terminplanungssoftware, die Ihnen gehört. Buchungsseiten, Kalendersynchronisierung, Videoräume und automatische E-Mails, entwickelt und betrieben von SaaSolutions.",
+    "Visit RSViP Online ↗": "RSViP Online besuchen ↗",
+    "Maybe later": "Vielleicht später",
+    "Close": "Schließen",
+    "Scheduling, booking pages and calendar sync": "Terminplanung, Buchungsseiten und Kalendersynchronisierung",
+    "New": "Neu"
   }
 }

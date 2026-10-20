@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import { DriveLanguageSwitcher } from './i18n/language-provider';
+import { NewProductPopup } from './new-product-popup';
 
 const projects = [
   { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
   { name: 'HospitalityOps', detail: 'Operations for cleaning, maintenance and field teams', tone: 'blue' },
   { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
-  { name: 'Mithaq', detail: 'Digital Islamic prenup and will', tone: 'yellow' },
+  { name: 'RSViP Online', detail: 'Scheduling, booking pages and calendar sync', tone: 'rsvip', href: 'https://rsviponline.com', external: true },
   { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
   { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
   { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
@@ -21,6 +22,7 @@ const methods = [
 export default function CompanyHome() {
   return (
     <main className="company-home">
+      <NewProductPopup />
       <header className="company-nav">
         <a href="#top" className="company-logo">SaaSolutions <sup>SL</sup></a>
         <nav aria-label="Company navigation">
@@ -55,6 +57,8 @@ export default function CompanyHome() {
                 <div className={`project-visual ${project.tone}`}>
                   {project.tone === 'drive' ? (
                     <><Image src="/og.png" alt="SaaSolution Drive — Your files. Quietly protected." fill sizes="(max-width: 700px) 78vw, 360px" priority /><span className="drive-edge-chip">Edge / NAS</span></>
+                  ) : project.tone === 'rsvip' ? (
+                    <><Image src="/rsvip/og.png" alt="RSViP Online — Scheduling software that stays yours." fill sizes="(max-width: 700px) 78vw, 360px" /><span className="drive-edge-chip">New</span></>
                   ) : (
                     <><span>{String(index + 1).padStart(2, '0')}</span><i>{project.name.slice(0, 2)}</i></>
                   )}
@@ -65,7 +69,7 @@ export default function CompanyHome() {
             );
 
             return project.href ? (
-              <a className="project-tile drive-tile" href={project.href} key={project.name} aria-label="Open the SaaSolution Drive landing page">{content}</a>
+              <a className={`project-tile ${project.tone}-tile`} href={project.href} key={project.name} aria-label={`Open ${project.name}`} {...(project.external ? { target: '_blank', rel: 'noopener' } : {})}>{content}</a>
             ) : (
               <article className="project-tile" key={project.name}>{content}</article>
             );
@@ -98,7 +102,7 @@ export default function CompanyHome() {
         <div className="product-count"><span>Seven products</span><b>07</b><p>One obsession with craft.</p></div>
         <div className="company-product-list">
           {projects.map((project, index) => project.href ? (
-            <a href={project.href} key={project.name}><span>{project.name}</span><i>{String(index + 1).padStart(2, '0')}</i></a>
+            <a href={project.href} key={project.name} {...(project.external ? { target: '_blank', rel: 'noopener' } : {})}><span>{project.name}</span><i>{String(index + 1).padStart(2, '0')}</i></a>
           ) : (
             <div key={project.name}><span>{project.name}</span><i>{String(index + 1).padStart(2, '0')}</i></div>
           ))}
@@ -140,7 +144,7 @@ export default function CompanyHome() {
             <a href="https://www.saasolution.es/products/hospitalityos">hospitalityOS</a>
             <a href="https://www.saasolution.es/products/hospitalityops">HospitalityOps</a>
             <a href="https://www.saasolution.es/products/hospitalitytv">HospitalityTV</a>
-            <a href="https://www.saasolution.es/products/mithaq">Mithaq</a>
+            <a href="https://rsviponline.com" target="_blank" rel="noopener">RSViP Online</a>
             <a href="/drive">SaaSolution Drive</a>
             <a href="/drive/edge">SaaSolution Drive Edge / NAS</a>
           </section>

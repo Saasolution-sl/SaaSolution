@@ -34,7 +34,7 @@ PROTECTED = (
     "Google Play",
     "Apple App Store",
     "AppGallery",
-    "Mithaq",
+    "RSViP Online",
     "Viyra",
     "Asunción",
     "Ceuta",
@@ -59,7 +59,7 @@ PROTECTED = (
 )
 UNCHANGED = {
     "SaaSolutions", "SL", "SaaSolution Drive", "hospitalityOS", "HospitalityOps",
-    "HospitalityTV", "Mithaq", "Viyra", "Delicious Fitness", "Google Play",
+    "HospitalityTV", "RSViP Online", "Viyra", "Delicious Fitness", "Google Play",
     "Apple App Store", "Huawei AppGallery", "AppGallery", "macOS", "Windows",
     "Linux", "SaaSolution Drive Edge", "Cubbit", "NAS", "SMB", "NFS",
     "Docker", "Synology DSM", "QNAP QTS/QuTS", "TrueNAS SCALE", "Unraid",
