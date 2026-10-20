@@ -3,7 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, ArrowRight, Check, Download, LoaderCircle, MailCheck, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Script from 'next/script';
+import { useEffect, useRef, useState } from 'react';
 import { useForm, useWatch, type FieldError, type FieldValues, type Path, type UseFormRegister } from 'react-hook-form';
 import {
   edgeBetaApplicationSchema,
@@ -28,6 +29,43 @@ const stepFields: Array<Array<Path<EdgeBetaApplication>>> = [
 ];
 
 const steps = ['About you', 'Your test', 'Safety', 'Contact'];
+
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+type TurnstileApi = {
+  render: (container: HTMLElement, options: { sitekey: string; callback: (token: string) => void; 'expired-callback': () => void; 'error-callback': () => void }) => string;
+  reset: (widgetId?: string) => void;
+};
+declare global {
+  interface Window { turnstile?: TurnstileApi }
+}
+
+function TurnstileWidget({ onToken, resetKey }: { onToken: (token: string) => void; resetKey: number }) {
+  const container = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | undefined>(undefined);
+  const [scriptReady, setScriptReady] = useState(false);
+
+  useEffect(() => {
+    if (!scriptReady || !turnstileSiteKey || !container.current || widgetId.current) return;
+    widgetId.current = window.turnstile?.render(container.current, {
+      sitekey: turnstileSiteKey,
+      callback: onToken,
+      'expired-callback': () => onToken(''),
+      'error-callback': () => onToken(''),
+    });
+  }, [scriptReady, onToken]);
+
+  useEffect(() => {
+    if (resetKey > 0 && widgetId.current) window.turnstile?.reset(widgetId.current);
+  }, [resetKey]);
+
+  return (
+    <>
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" onReady={() => setScriptReady(true)} />
+      <div ref={container} />
+    </>
+  );
+}
 
 function ChoiceGroup<T extends FieldValues>({
   name,
@@ -86,6 +124,8 @@ export function BetaApplicationForm() {
   const [step, setStep] = useState(0);
   const [result, setResult] = useState<ApplicationResult | null>(null);
   const [submitError, setSubmitError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileReset, setTurnstileReset] = useState(0);
   const {
     register,
     handleSubmit,
@@ -129,11 +169,15 @@ export function BetaApplicationForm() {
 
   async function submit(application: EdgeBetaApplication) {
     setSubmitError('');
+    if (turnstileSiteKey && !turnstileToken) {
+      setSubmitError('Please complete the security check before submitting.');
+      return;
+    }
     try {
       const response = await fetch('/api/drive/edge/beta/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(application),
+        body: JSON.stringify({ ...application, turnstileToken }),
       });
       const payload = await response.json() as ApplicationResult | { error?: string };
       if (!response.ok || !('outcome' in payload)) {
@@ -142,6 +186,8 @@ export function BetaApplicationForm() {
       setResult(payload);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : 'We could not submit your application.');
+      setTurnstileToken('');
+      setTurnstileReset((count) => count + 1);
     }
   }
 
@@ -256,6 +302,7 @@ export function BetaApplicationForm() {
             </div>
             <label className="beta-honeypot" aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" {...register('website')} /></label>
             <input type="hidden" {...register('startedAt', { valueAsNumber: true })} />
+            {turnstileSiteKey && <TurnstileWidget onToken={setTurnstileToken} resetKey={turnstileReset} />}
             {submitError && <p className="beta-submit-error" role="alert">{submitError}</p>}
           </section>
         )}
