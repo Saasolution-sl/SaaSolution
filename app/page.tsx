@@ -134,34 +134,34 @@ export default function CompanyHome() {
           <section>
             <h3>Company</h3>
             <a href="#about">About us</a>
-            <a href="https://www.saasolution.es/mission-vision">Mission &amp; vision</a>
-            <a href="https://www.saasolution.es/careers">Careers / Vacancies</a>
-            <a href="https://www.saasolution.es/partners">Partners</a>
+            <a href="/mission-vision">Mission &amp; vision</a>
+            <a href="/careers">Careers / Vacancies</a>
+            <a href="/partners">Partners</a>
             <a href="mailto:hello@saasolution.es">Contact</a>
           </section>
           <section>
             <h3>Products</h3>
-            <a href="https://www.saasolution.es/products/hospitalityos">hospitalityOS</a>
-            <a href="https://www.saasolution.es/products/hospitalityops">HospitalityOps</a>
-            <a href="https://www.saasolution.es/products/hospitalitytv">HospitalityTV</a>
+            <a href="/products/hospitalityos">hospitalityOS</a>
+            <a href="/products/hospitalityops">HospitalityOps</a>
+            <a href="/products/hospitalitytv">HospitalityTV</a>
             <a href="https://rsviponline.com" target="_blank" rel="noopener">RSViP Online</a>
             <a href="/drive">SaaSolution Drive</a>
             <a href="/drive/edge">SaaSolution Drive Edge / NAS</a>
           </section>
           <section>
             <h3>Resources</h3>
-            <a href="https://www.saasolution.es/blog">Blog</a>
-            <a href="https://www.saasolution.es/help-center">Help centre</a>
-            <a href="https://www.saasolution.es/docs">Documentation</a>
-            <a href="https://www.saasolution.es/api">API</a>
-            <a href="https://www.saasolution.es/support">Support</a>
+            <a href="/blog">Blog</a>
+            <a href="/help-center">Help centre</a>
+            <a href="/docs">Documentation</a>
+            <a href="/api">API</a>
+            <a href="/support">Support</a>
           </section>
           <section>
             <h3>Legal</h3>
-            <a href="https://www.saasolution.es/privacy">Privacy</a>
-            <a href="https://www.saasolution.es/terms">Terms</a>
-            <a href="https://www.saasolution.es/cookies">Cookies</a>
-            <a href="https://www.saasolution.es/legal">Legal notice</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="/cookies">Cookies</a>
+            <a href="/legal">Legal notice</a>
           </section>
         </div>
         <div className="footer-bottom"><small>© 2026 SaaSolutions SL · Ceuta, Spain</small><span>Spain · Mediterranean · Africa · South America · UAE/GCC · Southeast Asia · Europe</span></div>
