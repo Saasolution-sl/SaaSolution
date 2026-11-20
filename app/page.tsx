@@ -5,13 +5,12 @@ import { NewProductPopup } from './new-product-popup';
 
 const projects = [
   { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
-  { name: 'HospitalityOps', detail: 'Operations for cleaning, maintenance and field teams', tone: 'blue' },
+  { name: 'Connection Grid', detail: 'Modular integration for public institutions and enterprises', tone: 'connectgrid', href: '/connectgrid' },
   { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
   { name: 'RSViP Online', detail: 'Scheduling, booking pages and calendar sync', tone: 'rsvip', href: 'https://rsviponline.com', external: true },
   { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
   { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
   { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
-  { name: 'ConnectGrid', detail: 'Modular integration for public institutions and enterprises', tone: 'connectgrid', href: '/connectgrid' },
 ];
 
 const methods = [
@@ -101,7 +100,7 @@ export default function CompanyHome() {
       </section>
 
       <section className="company-products">
-        <div className="product-count"><span>Eight products</span><b>08</b><p>One obsession with craft.</p></div>
+        <div className="product-count"><span>Seven products</span><b>07</b><p>One obsession with craft.</p></div>
         <div className="company-product-list">
           {projects.map((project, index) => project.href ? (
             <a href={project.href} key={project.name} {...(project.external ? { target: '_blank', rel: 'noopener' } : {})}><span>{project.name}</span><i>{String(index + 1).padStart(2, '0')}</i></a>
@@ -144,12 +143,11 @@ export default function CompanyHome() {
           <section>
             <h3>Products</h3>
             <a href="/products/hospitalityos">hospitalityOS</a>
-            <a href="/products/hospitalityops">HospitalityOps</a>
+            <Link href="/connectgrid">Connection Grid</Link>
             <a href="/products/hospitalitytv">HospitalityTV</a>
             <a href="https://rsviponline.com" target="_blank" rel="noopener">RSViP Online</a>
             <a href="/drive">SaaSolution Drive</a>
             <a href="/drive/edge">SaaSolution Drive Edge / NAS</a>
-            <Link href="/connectgrid">SaaSolution ConnectGrid</Link>
           </section>
           <section>
             <h3>Resources</h3>
@@ -172,3 +170,4 @@ export default function CompanyHome() {
     </main>
   );
 }
+
