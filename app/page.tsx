@@ -4,13 +4,13 @@ import { DriveLanguageSwitcher } from './i18n/language-provider';
 import { NewProductPopup } from './new-product-popup';
 
 const projects = [
-  { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
-  { name: 'Connection Grid', detail: 'Modular integration for public institutions and enterprises', tone: 'connectgrid', href: '/connectgrid' },
-  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
   { name: 'RSViP Online', detail: 'Scheduling, booking pages and calendar sync', tone: 'rsvip', href: 'https://rsviponline.com', external: true },
+  { name: 'Connection Grid', detail: 'Modular integration for public institutions and enterprises', tone: 'connectgrid', href: '/connectgrid' },
+  { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
+  { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
+  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
   { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
   { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
-  { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
 ];
 
 const methods = [
