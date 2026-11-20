@@ -54,10 +54,10 @@ function translatePage(locale: Locale) {
     current = walker.nextNode() as Text | null;
   }
 
-  document.querySelectorAll('[aria-label], [title]').forEach((element) => {
+  document.querySelectorAll('[aria-label], [title], [placeholder]').forEach((element) => {
     if (element.closest('[data-i18n-skip]')) return;
     const stored = originalAttributes.get(element) ?? {};
-    for (const attribute of ['aria-label', 'title']) {
+    for (const attribute of ['aria-label', 'title', 'placeholder']) {
       const value = stored[attribute] ?? element.getAttribute(attribute);
       if (!value) continue;
       stored[attribute] = value;
