@@ -7,10 +7,10 @@ const projects = [
   { name: 'RSViP Online', detail: 'Scheduling, booking pages and calendar sync', tone: 'rsvip', href: 'https://rsviponline.com', external: true },
   { name: 'Connection Grid', detail: 'Modular integration for public institutions and enterprises', tone: 'connectgrid', href: '/connectgrid' },
   { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
-  { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
-  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
-  { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
   { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
+  { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange', href: 'https://hospitalityos.es/en', external: true },
+  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black', href: 'https://hospitalitytv.es/en', external: true },
+  { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
 ];
 
 const methods = [
@@ -60,6 +60,8 @@ export default function CompanyHome() {
                     <><Image src="/og.png" alt="SaaSolution Drive — Your files. Quietly protected." fill sizes="(max-width: 700px) 78vw, 360px" priority /><span className="drive-edge-chip">Edge / NAS</span></>
                   ) : project.tone === 'rsvip' ? (
                     <><Image src="/rsvip/og.png" alt="RSViP Online — Scheduling software that stays yours." fill sizes="(max-width: 700px) 78vw, 360px" /><span className="drive-edge-chip">New</span></>
+                  ) : project.tone === 'connectgrid' ? (
+                    <><span>{String(index + 1).padStart(2, '0')}</span><svg className="connectgrid-mark" viewBox="0 0 120 120" aria-hidden="true"><path d="M28 28 60 60 92 28M28 92 60 60 92 92" /><rect x="43" y="43" width="34" height="34" rx="8" /><circle cx="28" cy="28" r="7" /><circle cx="92" cy="28" r="7" /><circle cx="28" cy="92" r="7" /><circle cx="92" cy="92" r="7" /><circle cx="60" cy="60" r="9" /></svg></>
                   ) : (
                     <><span>{String(index + 1).padStart(2, '0')}</span><i>{project.name.slice(0, 2)}</i></>
                   )}
@@ -142,9 +144,9 @@ export default function CompanyHome() {
           </section>
           <section>
             <h3>Products</h3>
-            <a href="/products/hospitalityos">hospitalityOS</a>
+            <a href="https://hospitalityos.es/en" target="_blank" rel="noopener">hospitalityOS</a>
             <Link href="/connectgrid">Connection Grid</Link>
-            <a href="/products/hospitalitytv">HospitalityTV</a>
+            <a href="https://hospitalitytv.es/en" target="_blank" rel="noopener">HospitalityTV</a>
             <a href="https://rsviponline.com" target="_blank" rel="noopener">RSViP Online</a>
             <a href="/drive">SaaSolution Drive</a>
             <a href="/drive/edge">SaaSolution Drive Edge / NAS</a>
@@ -170,4 +172,5 @@ export default function CompanyHome() {
     </main>
   );
 }
+
 
