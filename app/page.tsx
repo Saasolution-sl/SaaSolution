@@ -1,17 +1,26 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { DriveLanguageSwitcher } from './i18n/language-provider';
 import { NewProductPopup } from './new-product-popup';
-import { ConsultingLink, HomeConsultingSection } from '../components/consulting/client-bits';
-import { homeSection } from '../lib/consulting/content';
 
-const projects = [
-  { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
-  { name: 'HospitalityOps', detail: 'Operations for cleaning, maintenance and field teams', tone: 'blue' },
-  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'black' },
+type Project = {
+  name: string;
+  detail: string;
+  tone: string;
+  href?: string;
+  external?: boolean;
+  image?: string;
+  imageAlt?: string;
+};
+
+const projects: Project[] = [
   { name: 'RSViP Online', detail: 'Scheduling, booking pages and calendar sync', tone: 'rsvip', href: 'https://rsviponline.com', external: true },
-  { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
+  { name: 'Connection Grid', detail: 'Modular integration for public institutions and enterprises', tone: 'connectgrid', href: '/connectgrid' },
+  { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green', href: 'https://staging.deliciousfitness.eu', external: true, image: '/projects/delicious-fitness.webp', imageAlt: 'Delicious Fitness mobile app preview' },
   { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
-  { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green' },
+  { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'hospitalityos', href: 'https://hospitalityos.es/en', external: true, image: '/projects/hospitalityos.svg', imageAlt: 'HospitalityOS official network mark' },
+  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'hospitalitytv', href: 'https://hospitalitytv.es/en', external: true, image: '/projects/hospitalitytv.png', imageAlt: 'HospitalityTV guest-screen preview' },
+  { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
 ];
 
 const methods = [
@@ -30,7 +39,6 @@ export default function CompanyHome() {
         <nav aria-label="Company navigation">
           <a href="#about">About</a>
           <a href="#work">Products</a>
-          <ConsultingLink page="landing" label={{ en: 'Consulting', es: 'Consultoría' }} />
           <a href="#method">Method</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -62,6 +70,10 @@ export default function CompanyHome() {
                     <><Image src="/og.png" alt="SaaSolution Drive — Your files. Quietly protected." fill sizes="(max-width: 700px) 78vw, 360px" priority /><span className="drive-edge-chip">Edge / NAS</span></>
                   ) : project.tone === 'rsvip' ? (
                     <><Image src="/rsvip/og.png" alt="RSViP Online — Scheduling software that stays yours." fill sizes="(max-width: 700px) 78vw, 360px" /><span className="drive-edge-chip">New</span></>
+                  ) : project.tone === 'connectgrid' ? (
+                    <><span>{String(index + 1).padStart(2, '0')}</span><svg className="connectgrid-mark" viewBox="0 0 120 120" aria-hidden="true"><path d="M28 28 60 60 92 28M28 92 60 60 92 92" /><rect x="43" y="43" width="34" height="34" rx="8" /><circle cx="28" cy="28" r="7" /><circle cx="92" cy="28" r="7" /><circle cx="28" cy="92" r="7" /><circle cx="92" cy="92" r="7" /><circle cx="60" cy="60" r="9" /></svg></>
+                  ) : project.image ? (
+                    <><span>{String(index + 1).padStart(2, '0')}</span><Image className={`project-art ${project.tone}-art`} src={project.image} alt={project.imageAlt ?? project.name} fill sizes="(max-width: 700px) 78vw, 360px" /></>
                   ) : (
                     <><span>{String(index + 1).padStart(2, '0')}</span><i>{project.name.slice(0, 2)}</i></>
                   )}
@@ -91,8 +103,6 @@ export default function CompanyHome() {
         <div><span>AI-first platforms</span><h2>Useful technology.<br /><em>Beautifully operated.</em></h2></div>
         <p>Modern cloud architecture, automation and human-centred workflows brought together in software that does real work.</p>
       </section>
-
-      <HomeConsultingSection />
 
       <section className="company-method" id="method">
         <div className="method-title"><span>The SaaSolutions method</span><h2>From brief to<br />standout launch.</h2></div>
@@ -140,19 +150,16 @@ export default function CompanyHome() {
             <h3>Company</h3>
             <a href="#about">About us</a>
             <a href="/mission-vision">Mission &amp; vision</a>
-            <ConsultingLink page="landing" label={homeSection.links[0].label} />
-            <ConsultingLink page="public" label={homeSection.links[1].label} />
-            <ConsultingLink page="private" label={homeSection.links[2].label} />
-            <ConsultingLink page="healthcheck" label={homeSection.links[3].label} />
             <a href="/careers">Careers / Vacancies</a>
             <a href="/partners">Partners</a>
             <a href="mailto:hello@saasolution.es">Contact</a>
           </section>
           <section>
             <h3>Products</h3>
-            <a href="/products/hospitalityos">hospitalityOS</a>
-            <a href="/products/hospitalityops">HospitalityOps</a>
-            <a href="/products/hospitalitytv">HospitalityTV</a>
+            <a href="https://hospitalityos.es/en" target="_blank" rel="noopener">hospitalityOS</a>
+            <Link href="/connectgrid">Connection Grid</Link>
+            <a href="https://staging.deliciousfitness.eu" target="_blank" rel="noopener">Delicious Fitness</a>
+            <a href="https://hospitalitytv.es/en" target="_blank" rel="noopener">HospitalityTV</a>
             <a href="https://rsviponline.com" target="_blank" rel="noopener">RSViP Online</a>
             <a href="/drive">SaaSolution Drive</a>
             <a href="/drive/edge">SaaSolution Drive Edge / NAS</a>
@@ -178,3 +185,5 @@ export default function CompanyHome() {
     </main>
   );
 }
+
+

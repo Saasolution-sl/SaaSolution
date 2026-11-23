@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import html.parser
 import json
+import os
 import re
 import urllib.request
 from pathlib import Path
@@ -15,12 +16,21 @@ from pathlib import Path
 from argostranslate import translate
 
 
-ROUTES = ("/", "/drive", "/drive/edge", "/drive/edge/install", "/drive/privacy", "/drive/terms")
+ROUTES = ("/", "/connectgrid", "/drive", "/drive/edge", "/drive/edge/install", "/drive/privacy", "/drive/terms")
 LOCALES = ("es", "nl", "ar", "pt", "fr", "de")
 OUTPUT = Path(__file__).parents[1] / "app" / "i18n" / "translations.json"
 MANUAL_OVERRIDES = Path(__file__).parents[1] / "app" / "i18n" / "manual-overrides.json"
+BASE_URL = os.environ.get("TRANSLATION_BASE_URL", "http://localhost:4173").rstrip("/")
 SKIP_ELEMENTS = {"script", "style", "noscript", "pre", "code"}
 PROTECTED = (
+    "SaaSolution ConnectGrid",
+    "ConnectGrid Core",
+    "Public Connect Grid",
+    "Universal Connect Grid",
+    "Connection Grid",
+    "ConnectGrid",
+    "PCG",
+    "UCG",
     "SaaSolution Drive Edge",
     "SaaSolution Drive",
     "Drive",
@@ -58,7 +68,8 @@ PROTECTED = (
     "x86-64",
 )
 UNCHANGED = {
-    "SaaSolutions", "SL", "SaaSolution Drive", "hospitalityOS", "HospitalityOps",
+    "SaaSolutions", "SL", "SaaSolution ConnectGrid", "ConnectGrid", "ConnectGrid Core",
+    "Public Connect Grid", "Universal Connect Grid", "Connection Grid", "PCG", "UCG", "SaaSolution Drive", "hospitalityOS", "HospitalityOps",
     "HospitalityTV", "RSViP Online", "Viyra", "Delicious Fitness", "Google Play",
     "Apple App Store", "Huawei AppGallery", "AppGallery", "macOS", "Windows",
     "Linux", "SaaSolution Drive Edge", "Cubbit", "NAS", "SMB", "NFS",
@@ -69,6 +80,7 @@ UNCHANGED = {
 }
 OVERRIDES = {
     "es": {
+        "Open Connection Grid": "Abrir Connection Grid",
         "Home": "Inicio", "Back to SaaSolutions home": "Volver al inicio de SaaSolutions",
         "Back to Drive": "Volver a Drive", "Explore Drive": "Explorar Drive",
         "SaaSolution Drive home": "Inicio de SaaSolution Drive", "Coming to Huawei AppGallery": "Próximamente en Huawei AppGallery",
@@ -78,6 +90,7 @@ OVERRIDES = {
         "Linux is also on the desktop roadmap.": "Linux también forma parte de la hoja de ruta para escritorio.",
     },
     "nl": {
+        "Open Connection Grid": "Connection Grid openen",
         "Home": "Home", "Back to SaaSolutions home": "Terug naar de SaaSolutions-homepagina",
         "Back to Drive": "Terug naar Drive", "Explore Drive": "Ontdek Drive",
         "SaaSolution Drive home": "SaaSolution Drive-startpagina", "Coming to Huawei AppGallery": "Binnenkort in Huawei AppGallery",
@@ -86,6 +99,7 @@ OVERRIDES = {
         "Linux is also on the desktop roadmap.": "Linux staat ook op de roadmap voor desktop.",
     },
     "ar": {
+        "Open Connection Grid": "فتح Connection Grid",
         "Home": "الرئيسية", "Back to SaaSolutions home": "العودة إلى الصفحة الرئيسية لـ SaaSolutions",
         "A private cloud-drive experience for files, photos and messaging backups—designed by SaaSolutions in Spain for the devices you use every day.": "تجربة تخزين سحابي خاصة للملفات والصور والنسخ الاحتياطية للمراسلات—صممتها SaaSolutions في إسبانيا للأجهزة التي تستخدمها كل يوم.",
         "A provider-neutral foundation designed to keep storage and the app experience independent.": "أساس محايد لمزوّدي التخزين، مصمم لإبقاء التخزين وتجربة التطبيق مستقلين عن بعضهما.",
@@ -97,6 +111,7 @@ OVERRIDES = {
         "Linux is also on the desktop roadmap.": "Linux مدرج أيضًا في خريطة طريق سطح المكتب.",
     },
     "pt": {
+        "Open Connection Grid": "Abrir Connection Grid",
         "Home": "Início", "Back to SaaSolutions home": "Voltar ao início da SaaSolutions",
         "Back to Drive": "Voltar ao Drive", "Explore Drive": "Explorar o Drive",
         "SaaSolution Drive home": "Início do SaaSolution Drive", "Coming to Huawei AppGallery": "Em breve na Huawei AppGallery",
@@ -105,6 +120,7 @@ OVERRIDES = {
         "Linux is also on the desktop roadmap.": "O Linux também faz parte do roteiro para computadores.",
     },
     "fr": {
+        "Open Connection Grid": "Ouvrir Connection Grid",
         "Home": "Accueil", "Back to SaaSolutions home": "Retour à l’accueil de SaaSolutions",
         "Back to Drive": "Retour à Drive", "Explore Drive": "Découvrir Drive",
         "SaaSolution Drive home": "Accueil de SaaSolution Drive", "Coming to Huawei AppGallery": "Bientôt sur Huawei AppGallery",
@@ -113,6 +129,7 @@ OVERRIDES = {
         "Linux is also on the desktop roadmap.": "Linux figure également sur la feuille de route des versions de bureau.",
     },
     "de": {
+        "Open Connection Grid": "Connection Grid öffnen",
         "Home": "Startseite", "Back to SaaSolutions home": "Zurück zur SaaSolutions-Startseite",
         "Back to Drive": "Zurück zu Drive", "Explore Drive": "Drive entdecken",
         "SaaSolution Drive home": "SaaSolution Drive-Startseite", "Coming to Huawei AppGallery": "Demnächst in der Huawei AppGallery",
@@ -144,6 +161,7 @@ class CopyCollector(html.parser.HTMLParser):
             attributes = dict(attrs)
             self.add(attributes.get("aria-label"))
             self.add(attributes.get("title"))
+            self.add(attributes.get("placeholder"))
 
     def handle_endtag(self, tag: str) -> None:
         if tag in SKIP_ELEMENTS and self.skip_depth:
@@ -157,7 +175,7 @@ class CopyCollector(html.parser.HTMLParser):
 def collect_copy() -> list[str]:
     collector = CopyCollector()
     for route in ROUTES:
-        with urllib.request.urlopen(f"http://localhost:4173{route}", timeout=30) as response:
+        with urllib.request.urlopen(f"{BASE_URL}{route}", timeout=30) as response:
             collector.feed(response.read().decode("utf-8"))
     return [value for value in collector.values if should_translate(value)]
 
@@ -191,12 +209,13 @@ def translate_preserving_names(text: str, locale: str) -> str:
 def main() -> None:
     copy = collect_copy()
     print(f"Collected {len(copy)} unique translatable strings", flush=True)
+    existing = json.loads(OUTPUT.read_text(encoding="utf-8")) if OUTPUT.exists() else {}
     catalogue: dict[str, dict[str, str]] = {}
     for locale in LOCALES:
         print(f"Translating {locale}...", flush=True)
         catalogue[locale] = {}
         for index, source in enumerate(copy, start=1):
-            catalogue[locale][source] = translate_preserving_names(source, locale)
+            catalogue[locale][source] = existing.get(locale, {}).get(source) or translate_preserving_names(source, locale)
             if index % 25 == 0:
                 print(f"  {index}/{len(copy)}", flush=True)
         catalogue[locale].update(OVERRIDES.get(locale, {}))
