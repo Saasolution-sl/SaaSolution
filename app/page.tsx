@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { DriveLanguageSwitcher } from './i18n/language-provider';
 import { NewProductPopup } from './new-product-popup';
+import { ConsultingLink, HomeConsultingSection } from '../components/consulting/client-bits';
+import { homeSection } from '../lib/consulting/content';
 
 const projects = [
   { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'orange' },
@@ -28,6 +30,7 @@ export default function CompanyHome() {
         <nav aria-label="Company navigation">
           <a href="#about">About</a>
           <a href="#work">Products</a>
+          <ConsultingLink page="landing" label={{ en: 'Consulting', es: 'Consultoría' }} />
           <a href="#method">Method</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -89,6 +92,8 @@ export default function CompanyHome() {
         <p>Modern cloud architecture, automation and human-centred workflows brought together in software that does real work.</p>
       </section>
 
+      <HomeConsultingSection />
+
       <section className="company-method" id="method">
         <div className="method-title"><span>The SaaSolutions method</span><h2>From brief to<br />standout launch.</h2></div>
         <div className="method-list">
@@ -135,6 +140,10 @@ export default function CompanyHome() {
             <h3>Company</h3>
             <a href="#about">About us</a>
             <a href="/mission-vision">Mission &amp; vision</a>
+            <ConsultingLink page="landing" label={homeSection.links[0].label} />
+            <ConsultingLink page="public" label={homeSection.links[1].label} />
+            <ConsultingLink page="private" label={homeSection.links[2].label} />
+            <ConsultingLink page="healthcheck" label={homeSection.links[3].label} />
             <a href="/careers">Careers / Vacancies</a>
             <a href="/partners">Partners</a>
             <a href="mailto:hello@saasolution.es">Contact</a>

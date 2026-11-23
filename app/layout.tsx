@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './consulting.css';
 import { LanguageProvider } from './i18n/language-provider';
 
 export const metadata: Metadata = {

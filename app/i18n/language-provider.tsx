@@ -3,6 +3,8 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import translations from './translations.json';
 import manualOverrides from './manual-overrides.json';
+import consultingTranslations from '../../lib/consulting/translations.json';
+import { equivalentPath } from '../../lib/consulting/routes';
 
 export type Locale = 'en' | 'es' | 'nl' | 'ar' | 'pt' | 'fr' | 'de';
 
@@ -19,10 +21,11 @@ const languages: { code: Locale; name: string; nativeName: string }[] = [
 type TranslationTable = Partial<Record<Exclude<Locale, 'en'>, Record<string, string>>>;
 const generatedTable = translations as TranslationTable;
 const overrideTable = manualOverrides as TranslationTable;
+const consultingTable = consultingTranslations as TranslationTable;
 const table = Object.fromEntries(
   (['es', 'nl', 'ar', 'pt', 'fr', 'de'] as const).map((locale) => [
     locale,
-    { ...generatedTable[locale], ...overrideTable[locale] },
+    { ...generatedTable[locale], ...consultingTable[locale], ...overrideTable[locale] },
   ]),
 ) as TranslationTable;
 const originalText = new WeakMap<Text, string>();
@@ -73,9 +76,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const saved = window.localStorage.getItem('saasolution-language') as Locale | null;
     const browser = window.navigator.language.slice(0, 2).toLowerCase() as Locale;
-    const supported = languages.some((language) => language.code === saved)
-      ? saved
+    // Language-prefixed pages (/en/…, /es/…) are authored in that language: the URL wins over the saved preference.
+    const fromPath = /^\/(en|es)(\/|$)/.exec(window.location.pathname)?.[1] as Locale | undefined;
+    let supported: Locale = languages.some((language) => language.code === saved)
+      ? (saved as Locale)
       : languages.some((language) => language.code === browser) ? browser : 'en';
+    // /es pages are Spanish; /en pages are English (or the visitor's chosen non-Spanish language, translated on screen).
+    if (fromPath === 'es') supported = 'es';
+    else if (fromPath === 'en' && supported === 'es') supported = 'en';
     const updateTimer = window.setTimeout(() => updateLocale(supported ?? 'en'), 0);
     return () => window.clearTimeout(updateTimer);
   }, []);
@@ -89,10 +97,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const setLocale = useCallback((nextLocale: Locale) => {
     window.localStorage.setItem('saasolution-language', nextLocale);
+    // Consulting pages exist natively in English and Spanish: move to the equivalent page when crossing between them.
+    const current = /^\/(en|es)(\/|$)/.exec(window.location.pathname)?.[1];
+    const target = nextLocale === 'es' ? 'es' : 'en';
+    if (current && current !== target) {
+      const destination = equivalentPath(window.location.pathname, target);
+      if (destination) { window.location.assign(destination); return; }
+    }
     updateLocale(nextLocale);
   }, []);
 
   return <LanguageContext.Provider value={{ locale, setLocale }}>{children}</LanguageContext.Provider>;
+}
+
+export function useSiteLocale() {
+  const context = useContext(LanguageContext);
+  if (!context) throw new Error('useSiteLocale must be used inside LanguageProvider');
+  return context;
 }
 
 function useLanguage() {
