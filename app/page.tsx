@@ -21,7 +21,7 @@ const projects: Project[] = [
   { name: 'Delicious Fitness', detail: 'Social food and meal preparation', tone: 'green', href: 'https://staging.deliciousfitness.eu', external: true, image: '/projects/delicious-fitness.webp', imageAlt: 'Delicious Fitness mobile app preview' },
   { name: 'SaaSolution Drive', detail: 'Private cloud storage and offline-first Edge/NAS sync', tone: 'drive', href: '/drive' },
   { name: 'hospitalityOS', detail: 'Multilingual hotel website and brand platform', tone: 'hospitalityos', href: 'https://hospitalityos.es/en', external: true, image: '/projects/hospitalityos.svg', imageAlt: 'HospitalityOS official network mark' },
-  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'hospitalitytv', href: 'https://hospitalitytv.es/en', external: true, image: '/projects/hospitalitytv.png', imageAlt: 'HospitalityTV guest-screen preview' },
+  { name: 'HospitalityTV', detail: 'A smarter in-room guest experience', tone: 'hospitalitytv', href: 'https://hospitalitytv.es/en', external: true, image: '/projects/hospitalitytv.webp', imageAlt: 'HospitalityTV guest-screen preview' },
   { name: 'Viyra', detail: 'International workflow automation', tone: 'pink' },
 ];
 
